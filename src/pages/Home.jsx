@@ -24,7 +24,9 @@ export default function Home() {
       <HeroSplitGridSection onCtaClick={scrollToCTA} />
       <MarqueeTrustTickerSection />
 
-      {/* Remaining sections will mount sequentially here */}
+      <BentoFeatureShowcaseSection />
+      <HowItWorksSection />
+      <InteractivePrevisualizationSection />
     </div>
   );
 }
@@ -202,7 +204,7 @@ function HeroSplitGridSection({ onCtaClick }) {
 }
 
 // ==========================================
-// 3. THE DYNAMIC MARQUEE TRUST BANNER (Interest Phase)
+// 2.5 THE DYNAMIC MARQUEE TRUST BANNER (Interest Phase)
 // ==========================================
 function MarqueeTrustTickerSection() {
   const tickerItems = [
@@ -236,6 +238,238 @@ function MarqueeTrustTickerSection() {
           </span>
         ))}
       </motion.div>
+    </section>
+  );
+}
+
+// ==========================================
+// 3. THE ASYMMETRICAL BENTO GRID (Desire / Benefits Phase)
+// ==========================================
+function BentoFeatureShowcaseSection() {
+  return (
+    <section className='mx-auto max-w-7xl px-6 py-12 md:px-12'>
+      <div className='mb-12 max-w-2xl space-y-2 text-left'>
+        <span className='text-brand-orange font-mono text-xs font-black tracking-wider uppercase'>
+          // Outpace The Competition
+        </span>
+        <h2 className='text-brand-main text-3xl font-black tracking-tight sm:text-4xl md:text-5xl'>
+          Zero Manual Friction. Pure Operational Velocity.
+        </h2>
+      </div>
+
+      {/* Asymmetrical Bento Grid Grid */}
+      <div className='grid grid-cols-1 gap-6 md:grid-cols-3'>
+        {/* Card 1: Neon Cyan Accent Fill (Large) */}
+        <div className='border-brand-border bg-brand-cyan flex min-h-65 flex-col items-start justify-between gap-8 rounded-2xl border-4 p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] sm:p-8 md:col-span-2'>
+          <div className='border-brand-border rounded-xl border-2 bg-white p-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'>
+            <Link2 size={24} />
+          </div>
+          <div className='space-y-2'>
+            <h3 className='text-brand-main text-2xl font-black tracking-tight'>
+              1. Drop Any Landing Page URL
+            </h3>
+            <p className='text-brand-main/80 max-w-xl text-sm leading-relaxed font-medium sm:text-base'>
+              No more staring at empty text fields wondering where to start.
+              Paste a website link, a documentation folder, or a deep GitHub
+              repository README file. Our parser extracts the exact functional
+              essence of your tool instantly.
+            </p>
+          </div>
+        </div>
+
+        {/* Card 2: Neon Orange Accent Fill (Small) */}
+        <div className='border-brand-border bg-brand-orange flex min-h-65 flex-col items-start justify-between gap-8 rounded-2xl border-4 p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] sm:p-8'>
+          <div className='border-brand-border rounded-xl border-2 bg-white p-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'>
+            <Globe size={24} />
+          </div>
+          <div className='space-y-2'>
+            <h3 className='text-brand-main text-2xl font-black tracking-tight'>
+              2. Human-First Copy
+            </h3>
+            <p className='text-brand-main/80 text-sm leading-relaxed font-medium'>
+              We strip away technical jargon. Caffeinate converts dense logic
+              hooks directly into clear user benefits that your targets can
+              easily read and engage with.
+            </p>
+          </div>
+        </div>
+
+        {/* Card 3: Neon Yellow Accent Fill (Full Row on Small / Balanced Large) */}
+        <div className='border-brand-border bg-brand-yellow flex flex-col items-start justify-between gap-6 rounded-2xl border-4 p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] sm:flex-row sm:items-center sm:p-8 md:col-span-3'>
+          <div className='max-w-2xl space-y-2'>
+            <h3 className='text-brand-main text-2xl font-black tracking-tight'>
+              3. Structured Multi-Channel Outputs Ready To Ship
+            </h3>
+            <p className='text-brand-main/80 text-sm leading-relaxed font-medium sm:text-base'>
+              Get formatted LinkedIn authority posts, concise X threads, and
+              pure markdown summaries delivered directly onto your dashboard
+              framework layout within single-minute execution cycles.
+            </p>
+          </div>
+          <div className='border-brand-border shrink-0 rounded-lg border-2 bg-white px-4 py-2.5 font-mono text-xs font-black text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'>
+            pipeline_mode: multi_channel
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ==========================================
+// 4. THE "HOW IT WORKS" 1-2-3 GUIDE (Clarity Phase)
+// ==========================================
+function HowItWorksSection() {
+  const workflowSteps = [
+    {
+      num: '01',
+      title: 'Context Link Ingestion',
+      body: 'Paste your URL parameters. Our system performs deep web crawling routines to collect operational asset variables under 10 seconds.',
+    },
+    {
+      num: '02',
+      title: 'Tone Vector Tuning',
+      body: 'Select customized marketing personas like "Relatable Solo Builder" or "Confident Technical Architect" to target specific customer niches perfectly.',
+    },
+    {
+      num: '03',
+      title: 'Deploy Content Streams',
+      body: 'Review and copy clean content packs directly to your social feeds. Keep consistency high and conversion pipelines active.',
+    },
+  ];
+
+  return (
+    <section className='border-brand-border bg-surface border-y-4 px-6 py-16 md:px-12'>
+      <div className='mx-auto max-w-7xl space-y-12'>
+        <div className='mx-auto max-w-xl space-y-2 text-center'>
+          <h2 className='text-brand-main text-3xl font-black tracking-tight sm:text-4xl'>
+            Simple Sequencing. Radical Results.
+          </h2>
+          <p className='text-brand-muted text-sm font-medium sm:text-base'>
+            From bare URL coordinates to active context assets in three linear
+            phases.
+          </p>
+        </div>
+
+        <div className='grid grid-cols-1 gap-8 lg:grid-cols-3'>
+          {workflowSteps.map((step, idx) => (
+            <div
+              key={idx}
+              className='border-brand-border group relative rounded-2xl border-4 bg-white p-6 pt-12 shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[7px_7px_0px_0px_rgba(0,0,0,1)]'
+            >
+              {/* Massive Structural Floating Numbers */}
+              <div className='border-brand-border bg-brand-yellow absolute -top-5 left-6 border-4 px-3 py-1 font-mono text-2xl font-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-transform group-hover:-translate-y-0.5'>
+                {step.num}
+              </div>
+              <div className='space-y-2'>
+                <h3 className='text-brand-main text-xl font-black tracking-tight'>
+                  {step.title}
+                </h3>
+                <p className='text-brand-muted text-xs leading-relaxed font-medium sm:text-sm'>
+                  {step.body}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ==========================================
+// 5. INTERACTIVE OUTPUT PREVIEWS SECTION (Visual Validation)
+// ==========================================
+function InteractivePrevisualizationSection() {
+  return (
+    <section className='mx-auto max-w-7xl space-y-12 px-6 py-12 md:px-12'>
+      <div className='max-w-2xl space-y-2 text-left'>
+        <span className='text-brand-green font-mono text-xs font-black tracking-wider uppercase'>
+          // Structural Asset Previews
+        </span>
+        <h2 className='text-brand-main text-3xl font-black tracking-tight sm:text-4xl md:text-5xl'>
+          Real Copies. Human Cadence.
+        </h2>
+        <p className='text-brand-muted text-sm font-medium sm:text-base'>
+          This is exactly what the engine produces based on your product
+          features. No fluff, no robotic filler.
+        </p>
+      </div>
+
+      <div className='grid grid-cols-1 gap-8 lg:grid-cols-2'>
+        {/* Mock Content Layout Asset 1: LinkedIn Interface Frame */}
+        <div className='border-brand-border space-y-4 rounded-2xl border-4 bg-white p-6 text-left shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]'>
+          <div className='border-brand-border flex items-center gap-3 border-b-2 pb-3'>
+            <div className='border-brand-border bg-brand-orange flex h-10 w-10 items-center justify-center rounded-full border-2 text-sm font-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'>
+              YO
+            </div>
+            <div>
+              <div className='text-brand-main text-sm font-black tracking-wide'>
+                Yusuf Oyinlola
+              </div>
+              <div className='text-brand-muted font-mono text-xs font-bold'>
+                Frontend Architect • 1m ago
+              </div>
+            </div>
+          </div>
+          <div className='text-brand-main space-y-3 text-xs leading-relaxed font-medium sm:text-sm'>
+            <p className='text-brand-orange font-bold'>
+              Stop wasting weeks wrestling with payment integrations and web
+              route setups. 🛠️
+            </p>
+            <p>
+              I built SkillSync to solve my own problem as a developer. Instead
+              of configuring databases from scratch, I wanted a boilerplate that
+              ships in seconds.
+            </p>
+            <p className='bg-brand-cyan/10 border-brand-border/40 rounded-lg border p-2.5 font-mono text-xs font-bold text-black/70'>
+              👉 Join the product waitlist today for discounted early-bird
+              parameters.
+            </p>
+          </div>
+        </div>
+
+        {/* Mock Content Layout Asset 2: X Thread Post Frame */}
+        <div className='border-brand-border relative space-y-4 rounded-2xl border-4 bg-white p-6 text-left shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]'>
+          <div className='bg-brand-green border-brand-border absolute top-4 right-4 border-2 px-2 py-0.5 font-mono text-[9px] font-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'>
+            X_THREAD_PERSONA
+          </div>
+          <div className='border-brand-border flex items-center gap-3 border-b-2 pb-3'>
+            <div className='border-brand-border bg-brand-yellow flex h-10 w-10 items-center justify-center rounded-full border-2 text-sm font-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'>
+              ZZ
+            </div>
+            <div>
+              <div className='text-brand-main text-sm font-black tracking-wide'>
+                @yuzstack_engine
+              </div>
+              <div className='text-brand-muted font-mono text-xs font-bold'>
+                Active Thread Vector
+              </div>
+            </div>
+          </div>
+          <div className='text-brand-main space-y-4 text-xs leading-relaxed font-medium sm:text-sm'>
+            <div className='space-y-1'>
+              <div className='font-black text-black'>
+                1/3 • The Developer Trap 🪤
+              </div>
+              <p className='text-brand-brand-muted'>
+                We spend 80% of our production timeline config-matching state
+                trees instead of polishing features. Let's flip that ratio
+                completely.
+              </p>
+            </div>
+            <div className='h-px bg-black/10' />
+            <div className='space-y-1'>
+              <div className='font-black text-black'>
+                2/3 • Automated Synchronization
+              </div>
+              <p className='text-brand-brand-muted'>
+                Caffeinate acts as an isolated context bridge, converting plain
+                technical code parameters into high-intent benefit assets.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
