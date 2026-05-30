@@ -1,6 +1,6 @@
 import { useState } from 'react';
 // eslint-disable-next-line
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import {
   Sparkles,
   ArrowRight,
@@ -27,6 +27,9 @@ export default function Home() {
       <BentoFeatureShowcaseSection />
       <HowItWorksSection />
       <InteractivePrevisualizationSection />
+
+      <ObjectionCrusherFaqSection />
+      <ConversionCapturePortalSection />
     </div>
   );
 }
@@ -78,6 +81,7 @@ function HeroSplitGridSection({ onCtaClick }) {
 
   const handleFormSubmit = e => {
     e.preventDefault();
+    console.log('YES');
     if (inputUrl) onCtaClick();
   };
 
@@ -468,6 +472,167 @@ function InteractivePrevisualizationSection() {
               </p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ==========================================
+// 6. ACCORDION OBJECTION-CRUSHER GRID (FAQ Phase)
+// ==========================================
+function ObjectionCrusherFaqSection() {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const faqs = [
+    {
+      question: 'Does the output sound like a robotic AI wrote it?',
+      answer:
+        'Absolutely not. Standard LLMs output generic academic text. Caffeinate is built with context-matching tone modules specifically engineered around real builder cadences, ensuring your posts sound organic, concise, and human-friendly.',
+    },
+    {
+      question: 'What platforms are supported by the generation engine?',
+      answer:
+        'We offer tailored layouts optimized explicitly for LinkedIn and Twitter/X feeds, alongside clean Markdown summaries perfect for technical README documentation frameworks.',
+    },
+    {
+      question: 'Is it completely free to try?',
+      answer:
+        'Yes. Your first complete multi-channel content pack is entirely on the house. No credit card required. Input your URL parameters and evaluate the output quality instantly.',
+    },
+  ];
+
+  return (
+    <section className='mx-auto max-w-4xl space-y-12 px-6 py-12 md:px-12'>
+      <div className='mx-auto max-w-xl space-y-2 text-center'>
+        <span className='text-brand-cyan font-mono text-xs font-black tracking-wider uppercase'>
+          // Risk Mitigation
+        </span>
+        <h2 className='text-brand-main text-3xl font-black tracking-tight sm:text-4xl'>
+          Objections, Crushed.
+        </h2>
+      </div>
+
+      {/* Accordion Layout Shell */}
+      <div className='space-y-4 text-left'>
+        {faqs.map((faq, idx) => {
+          const isOpen = openIndex === idx;
+          return (
+            <div
+              key={idx}
+              className='border-brand-border overflow-hidden rounded-2xl border-4 bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all'
+            >
+              {/* Accordion Header Action Bar */}
+              <button
+                onClick={() => setOpenIndex(isOpen ? null : idx)}
+                className='hover:bg-surface text-brand-main flex w-full cursor-pointer items-center justify-between bg-white px-6 py-5 text-left text-sm font-black select-none focus:outline-none sm:text-base'
+              >
+                <span>{faq.question}</span>
+                <span
+                  className={`transform font-mono text-xl transition-transform duration-200 ${isOpen ? 'rotate-45' : 'rotate-0'}`}
+                >
+                  ＋
+                </span>
+              </button>
+
+              {/* Dynamic Animated Body Block */}
+              <motion.div
+                initial={false}
+                animate={{
+                  height: isOpen ? 'auto' : 0,
+                  opacity: isOpen ? 1 : 0,
+                }}
+                transition={{ duration: 0.25, ease: 'easeInOut' }}
+                className='border-brand-border bg-surface overflow-hidden'
+                style={{ borderTopWidth: isOpen ? '2px' : '0px' }}
+              >
+                <div className='text-brand-muted bg-white p-6 text-xs leading-relaxed font-medium sm:text-sm'>
+                  {faq.answer}
+                </div>
+              </motion.div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+// ==========================================
+// 7. INVERTED-COLOR FINAL CTA BLOCK (Action / Capture Phase)
+// ==========================================
+function ConversionCapturePortalSection() {
+  const [email, setEmail] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleCaptureSubmit = e => {
+    e.preventDefault();
+    if (email) {
+      setIsSubmitted(true);
+      setEmail('');
+    }
+  };
+
+  return (
+    <section
+      id='conversion-portal'
+      className='mx-auto max-w-7xl px-6 py-12 md:px-12'
+    >
+      {/* Inverted Brutalist Block: Swapping Background for High-Contrast Impact */}
+      <div className='border-brand-border bg-brand-main relative overflow-hidden rounded-3xl border-4 p-8 text-center text-white shadow-[10px_10px_0px_0px_#facc15] sm:p-12 lg:p-16'>
+        {/* Background Subtle Mesh Accent Graphic */}
+        <div className='absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(250,204,21,0.15)_0%,transparent_70%)]' />
+
+        <div className='mx-auto flex max-w-2xl flex-col items-center justify-center space-y-6'>
+          <h2 className='text-3xl leading-none font-black tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl'>
+            Claim Your Free Content Pack.
+          </h2>
+          <p className='max-w-md text-sm leading-relaxed font-medium text-white/80 sm:text-base md:text-lg'>
+            Join the automated content movement today. Secure high-converting
+            visibility and stay consistent across networks without lifting a
+            finger.
+          </p>
+
+          <AnimatePresence mode='wait'>
+            {!isSubmitted ? (
+              <motion.form
+                key='form'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onSubmit={handleCaptureSubmit}
+                className='w-full max-w-md pt-4'
+              >
+                <div className='border-brand-border flex flex-col items-center gap-3 rounded-2xl border-4 bg-white p-2 shadow-[4px_4px_0px_0px_#22d3ee] sm:flex-row'>
+                  <input
+                    type='email'
+                    placeholder='Enter your routing email...'
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                    className='w-full bg-transparent px-4 py-2.5 text-sm font-bold text-black placeholder-gray-400 focus:outline-none sm:text-base'
+                    required
+                  />
+                  <button
+                    type='submit'
+                    className='border-brand-border bg-brand-yellow w-full shrink-0 cursor-pointer rounded-xl border-2 px-6 py-3 text-xs font-black tracking-wide text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:bg-white hover:shadow-none sm:w-auto sm:text-sm'
+                  >
+                    Get Early Access
+                  </button>
+                </div>
+              </motion.form>
+            ) : (
+              /* Success Callback State Wrapper */
+              <motion.div
+                key='success'
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className='border-brand-border bg-brand-green rounded-2xl border-4 p-6 text-sm font-black tracking-wide text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sm:text-base'
+              >
+                🎉 Pack Sucessfully Claimed! Check your email for the next
+                steps.
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </section>
