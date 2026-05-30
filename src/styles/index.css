@@ -1,0 +1,26 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-bg: #ffffff;
+  --color-surface: #f9fafb;
+
+  /* Remapped text keys to prevent native layout overrides */
+  --color-brand-main: #000000;
+  --color-brand-muted: #4b5563;
+  --color-brand-border: #000000;
+
+  /* High-Contrast Neo-Brutalist Palette Blocks */
+  --color-brand-yellow: #facc15;
+  --color-brand-orange: #fb923c;
+  --color-brand-cyan: #22d3ee;
+  --color-brand-green: #4ade80;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-brand-main);
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+}
