@@ -43,3 +43,11 @@ Custom color blocks and hard-brutalist shadows are exposed directly to the Tailw
 ### 3. Absolute Performance Optimization
 
 State parameters are isolated locally inside the input and accordion components. This setup prevents unneeded root re-renders across parent nodes, keeping performance high on mobile, tablet, and desktop screens.
+
+## Getting Started
+
+To run this project locally:
+
+1. Clone the repository: `git clone git@github.com:YuzStack/70_Caffeinate.git`
+2. Install dependencies: `npm install`
+3. Start the development server: `npm run dev`
